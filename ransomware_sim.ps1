@@ -9,6 +9,7 @@
     Author: Security Education Team
     Version: 2.0
     Purpose: Educational demonstration only - completely safe
+    Run in powershell: .\ransomware_sim.ps1 in folder of script
 #>
 
 param(
