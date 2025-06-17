@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Main Program Flow - Ransomware Simulation</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/mermaid/10.6.1/mermaid.min.js"></script>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            padding: 20px;
+            color: #333;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            background: rgba(255, 255, 255, 0.95);
+            border-radius: 20px;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+            backdrop-filter: blur(10px);
+            padding: 30px;
+        }
+
+        .header {
+            text-align: center;
+            margin-bottom: 40px;
+        }
+
+        .header h1 {
+            color: #2c3e50;
+            font-size: 2.5rem;
+            font-weight: 700;
+            margin-bottom: 10px;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
+        }
+
+        .header p {
+            color: #7f8c8d;
+            font-size: 1.1rem;
+            font-weight: 300;
+        }
+
+        .flowchart-container {
+            background: white;
+            border-radius: 15px;
+            padding: 30px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            margin-bottom: 20px;
+        }
+
+        .flowchart-title {
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: #2c3e50;
+            margin-bottom: 20px;
+            text-align: center;
+            border-bottom: 3px solid #3498db;
+            padding-bottom: 10px;
+        }
+
+        .flowchart-description {
+            background: #f8f9fa;
+            border-left: 4px solid #3498db;
+            padding: 15px 20px;
+            margin-bottom: 25px;
+            border-radius: 0 10px 10px 0;
+            font-style: italic;
+            color: #555;
+        }
+
+        .mermaid {
+            display: flex;
+            justify-content: center;
+            margin: 20px 0;
+        }
+
+        .legend {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 15px;
+            margin-top: 30px;
+            padding: 20px;
+            background: #f8f9fa;
+            border-radius: 10px;
+        }
+
+        .legend-item {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-size: 14px;
+        }
+
+        .legend-color {
+            width: 20px;
+            height: 20px;
+            border-radius: 4px;
+            border: 2px solid #333;
+        }
+
+        @media (max-width: 768px) {
+            .container {
+                padding: 20px;
+                margin: 10px;
+            }
+            
+            .header h1 {
+                font-size: 2rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>🔒 Main Program Flow</h1>
+            <p>Ransomware Simulation - Main Program Execution</p>
+        </div>
+
+        <div class="flowchart-container">
+            <h2 class="flowchart-title">Main Program Flow</h2>
+            <div class="flowchart-description">
+                This flowchart shows the main program execution flow, starting from initialization through the main menu system and various user operations.
+            </div>
+            <div class="mermaid">
+                flowchart TD
+                    A[Start: ransomware_sim.ps1] --> B[Load Configuration]
+                    B --> C[Test Prerequisites]
+                    C --> D{Prerequisites OK?}
+                    D -->|No| E[Error: Missing AES Module] --> Z[Exit]
+                    D -->|Yes| F[Import AES Module]
+                    F --> G[Initialize Environment]
+                    G --> H[Show Main Menu]
+                    H --> I{User Selection}
+                    I -->|1| J[Encryption Simulation]
+                    I -->|2| K[Restore Files]
+                    I -->|3| L[System Status]
+                    I -->|4| M[View Logs]
+                    I -->|5| N[Open Backup Folder]
+                    I -->|6| O[Health Check]
+                    I -->|7| P[About/Help]
+                    I -->|0| Q[Exit] --> Z
+                    
+                    J --> H
+                    K --> H
+                    L --> H
+                    M --> H
+                    N --> H
+                    O --> H
+                    P --> H
+                    
+                    classDef startEnd fill:#e1f5fe,stroke:#01579b,stroke-width:2px
+                    classDef process fill:#f3e5f5,stroke:#4a148c,stroke-width:2px
+                    classDef decision fill:#fff3e0,stroke:#e65100,stroke-width:2px
+                    classDef error fill:#ffcdd2,stroke:#d32f2f,stroke-width:2px
+                    
+                    class A,Z startEnd
+                    class B,C,F,G,H,J,K,L,M,N,O,P,Q process
+                    class D,I decision
+                    class E error
+            </div>
+            <div class="legend">
+                <div class="legend-item">
+                    <div class="legend-color" style="background: #e1f5fe; border-color: #01579b;"></div>
+                    <span>Start/End Points</span>
+                </div>
+                <div class="legend-item">
+                    <div class="legend-color" style="background: #f3e5f5; border-color: #4a148c;"></div>
+                    <span>Process Steps</span>
+                </div>
+                <div class="legend-item">
+                    <div class="legend-color" style="background: #fff3e0; border-color: #e65100;"></div>
+                    <span>Decision Points</span>
+                </div>
+                <div class="legend-item">
+                    <div class="legend-color" style="background: #ffcdd2; border-color: #d32f2f;"></div>
+                    <span>Error States</span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        mermaid.initialize({
+            startOnLoad: true,
+            theme: 'default',
+            flowchart: {
+                useMaxWidth: true,
+                htmlLabels: true,
+                curve: 'basis'
+            }
+        });
+    </script>
+</body>
+</html>
