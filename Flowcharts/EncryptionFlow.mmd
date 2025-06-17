@@ -1,0 +1,25 @@
+flowchart TD
+    A[Start Encryption] --> B[Scan Desktop for Files]
+    B --> C{Files Found?}
+    C -->|No| D[Show Warning] --> Z[Return to Menu]
+    C -->|Yes| E[Show File List]
+    E --> F{User Confirms?}
+    F -->|No| G[Cancel] --> Z
+    F -->|Yes| H[Create Backup Folder]
+    H --> I[Process Each File]
+    I --> J[Backup Original]
+    J --> K[Encrypt File]
+    K --> L[Remove Original]
+    L --> M{More Files?}
+    M -->|Yes| I
+    M -->|No| N[Create Ransom Note]
+    N --> O[Show Results]
+    O --> Z
+    
+    classDef process fill:#ffebee,stroke:#b71c1c,stroke-width:2px
+    classDef decision fill:#fff3e0,stroke:#e65100,stroke-width:2px
+    classDef warning fill:#fff8e1,stroke:#f57f17,stroke-width:2px
+    
+    class A,B,E,H,I,J,K,L,N,O process
+    class C,F,M decision
+    class D,G warning
